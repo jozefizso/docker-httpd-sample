@@ -19,3 +19,15 @@ docker run -d -p 8080:80 web
 ```shell
 curl http://localhost:8080
 ```
+
+## Apache Server Configuration
+
+Apache server is configured for the docker environment.
+It runs on port 80 and the **ServerName** is taken from the
+environment variable `HOSTNAME` which is set by docker.
+
+**conf/httpd.conf**
+```diff
+-#ServerName www.example.com:80
++ServerName ${HOSTNAME}
+```
